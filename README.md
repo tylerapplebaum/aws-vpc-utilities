@@ -25,7 +25,7 @@ You may also be interested in this handy one-liner to grab your own public IPv4 
 
 ## Show-EC2SGRules
 ##### Background
-The AWS-provided `Get-EC2SecurityGroup` cmdlet has nested output, which is not easily consumed. The `Show-EC2SGRules` aims to make visible the most important details of a security group -- the rules themselves.
+The AWS-provided `Get-EC2SecurityGroup` cmdlet has nested output, which is not easily consumed. The `Show-EC2SGRules` function aims to make visible the most important details of a security group -- the rules themselves.
 
 ##### Examples
 ```
