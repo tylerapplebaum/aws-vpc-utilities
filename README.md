@@ -1,7 +1,12 @@
 # aws-vpc-utilities
 
 ## Create-EC2SGRules
-Examples:
+##### Background
+AWS provides [documentation on using the AWS Tools for Powershell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-ec2-sg.html), which these functions require. These functions were created because the current method AWS provides doesn't feel as friendly or as scalable as it could be. The `Create-EC2SGRules` function is most useful when creating multiple port rules for the same CIDR block.
+
+The `Create-EC2SGRules` function isn't perfect either. In order to create tcp and udp rules, the function must be run twice; once for each protocol. The same limitation applies to creating security group entries for different CIDR blocks.
+
+##### Examples
 ```
 Create-EC2SGRules -Protocol tcp -PortList 666,123,445 -CidrBlock 192.0.2.26/32 -CidrBlockDescription TestRule -GroupId sg-xxxxxxxx
 Create-EC2SGRules -Protocol tcp -PortRangeStart 49152 -PortRangeEnd 65535 -CidrBlock 192.0.2.0/24 -CidrBlockDescription TestRule -GroupId sg-xxxxxxxx
@@ -19,11 +24,14 @@ You may also be interested in this handy one-liner to grab your own public IPv4 
 ```
 
 ## Show-EC2SGRules
-Examples:
+##### Background
+The AWS-provided `Get-EC2SecurityGroup` cmdlet has nested output, which is not easily consumed. The `Show-EC2SGRules` aims to make visible the most important details of a security group -- the rules themselves.
+
+##### Examples
 ```
 Show-EC2SGRules -GroupId sg-xxxxxxxx | Format-Table
 ```
-Expected output:
+##### Expected output
 ```
 PS C:\> Show-EC2SGRules -GroupId sg-06057dcf34302a37e | Format-Table
 
