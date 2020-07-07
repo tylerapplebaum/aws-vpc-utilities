@@ -53,15 +53,15 @@ If ($PortList){
     }
 }
 Else {
-        $IPRange = New-Object -TypeName Amazon.EC2.Model.IpRange
-        $IPRange.CidrIp = $CidrBlock
-        $IPRange.Description = $CidrBlockDescription
-        $Rule = New-Object Amazon.EC2.Model.IpPermission 
-        $Rule.IpProtocol = $Protocol 
-        $Rule.FromPort = $PortRangeStart #This is the beginning of the port range, not source port.
-        $Rule.ToPort = $PortRangeEnd
-        $Rule.IPv4Ranges = $IPRange
-        [void]$RuleList.Add($Rule)
+    $IPRange = New-Object -TypeName Amazon.EC2.Model.IpRange
+    $IPRange.CidrIp = $CidrBlock
+    $IPRange.Description = $CidrBlockDescription
+    $Rule = New-Object Amazon.EC2.Model.IpPermission 
+    $Rule.IpProtocol = $Protocol 
+    $Rule.FromPort = $PortRangeStart #This is the beginning of the port range, not source port.
+    $Rule.ToPort = $PortRangeEnd
+    $Rule.IPv4Ranges = $IPRange
+    [void]$RuleList.Add($Rule)
 }
 
 Grant-EC2SecurityGroupIngress -GroupId $GroupId -IpPermissions $RuleList
