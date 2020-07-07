@@ -13,6 +13,11 @@ $SecurityGroup = New-EC2SecurityGroup -Description "Amazon FSx Security Group fo
 Create-EC2SGRules -Protocol tcp -PortRangeStart 49152 -PortRangeEnd 65535 -CidrBlock 192.0.2.0/24 -CidrBlockDescription TestRule -GroupId $SecurityGroup
 ```
 
+You may also be interested in this handy one-liner to grab your own public IPv4 address as seen by AWS.
+```
+[System.Text.Encoding]::ASCII.GetString((Invoke-WebRequest "https://checkip.amazonaws.com" | Select-Object -ExpandProperty Content)).Trim()
+```
+
 ## Show-EC2SGRules
 Examples:
 ```
