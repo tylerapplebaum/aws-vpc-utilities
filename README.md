@@ -29,7 +29,7 @@ The AWS-provided `Get-EC2SecurityGroup` cmdlet has nested output, which is not e
 
 ##### Examples
 ```
-Show-EC2SGRules -GroupId sg-xxxxxxxx | Format-Table
+Show-EC2SGRules -GroupId sg-06057dcf34302a37e | Format-Table
 ```
 ##### Expected output
 ```
