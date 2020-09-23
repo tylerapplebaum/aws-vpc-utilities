@@ -20,7 +20,7 @@ Create-EC2SGRules -Protocol tcp -PortRangeStart 49152 -PortRangeEnd 65535 -CidrB
 
 You may also be interested in this handy one-liner to grab your own public IPv4 address as seen by AWS.
 ```
-[System.Text.Encoding]::ASCII.GetString((Invoke-WebRequest "https://checkip.amazonaws.com" | Select-Object -ExpandProperty Content)).Trim()
+(Invoke-RestMethod https://checkip.amazonaws.com).Trim()
 ```
 
 ## Show-EC2SGRules
